@@ -1,0 +1,169 @@
+body {
+  background: #fff;
+}
+.row.main {
+  height: 100vh;
+}
+.col.main {
+  overflow: auto;
+}
+.sidebar {
+  background: #fff;
+  box-shadow: 2px 0px 2px rgba(0,0,0,.3);
+}
+.col-sm-9.dotted {
+  overflow: auto;
+}
+.form-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.token {
+  font-size: 5em !important;
+  color: #8f8f8f;
+}
+.btn {
+  text-transform: uppercase;
+  font-family: Roboto;
+  border-radius: 0;
+  font-weight: 500;
+}
+.double-column-form .form-group {
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-right: 15px;
+  margin-left: -4px;
+}
+.table tr td {
+  vertical-align: middle;
+}
+.users-list {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+  margin: 0;
+}
+.users-list li {
+  border: 1px solid #efefef;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.users-list li.dropdown.show {
+  flex-flow: row wrap;
+}
+.users-list li:first-child {
+  border-top: 1px solid #efefef;
+}
+.users-list li {
+  border-top: none;
+}
+.users-list li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  color: #5f5f5f;
+}
+.users-list li i:first-child{
+  padding: .5em;
+  margin-right: 1em;
+}
+.dropdown-menu {
+  flex: 1 0 100%;
+  float: none;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  border-radius: 0;
+  border: none;
+}
+.dropdown-toggler {
+  width: 100%;
+  text-align: left;
+}
+.dropdown-menu li a {
+  font-size: .8em;
+}
+.dropdown-menu li a:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: '\f054';
+  font-size: .8em;
+  margin-right: 3em;
+  margin-left: 1em;
+}
+.input-group-append > .btn {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-left: none;
+  font-size: 1.2em;
+}
+.btn-group .btn {
+  margin-left: -1px;
+  font-size: .9em;
+  padding: .3em .7em;
+}
+input#search {
+  border-radius: 0;
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3), -.5px -.5px 1px rgba(0,0,0,.3);
+  font-family: Roboto;
+}
+input#search::placeholder {
+  color: #cfcfcf;
+}
+.table td {
+  padding: .35em .75rem;
+}
+.table tbody tr td::first-child {
+  text-transform: capitalize;
+}
+.table-striped tbody tr.leader-row {
+  background: lightblue;
+}
+.form-check-inline  {
+  margin-left: .75rem;
+}
+th {
+  text-align: left;
+}
+.has-error .form-control {
+  border: 1px solid #c0392b;
+}
+a.dropdown-toggler:after {
+  font-family: 'FontAwesome';
+  position: absolute;
+  padding: .5em;
+  right: .5em;
+  top: 1em;
+}
+a.dropdown-toggler[aria-expanded=true]:after {
+  content: '\f0d8';
+}
+a.dropdown-toggler[aria-expanded=false]:after {
+  content: '\f0d7';
+}
+.input-group-append {
+  z-index: 10;
+  position: relative;
+  margin-left: -3.5em;
+}
+.input-group-search .btn.btn-primary {
+  background: #fff;
+  color: #0275d8;
+  border: #fff;
+}
+@media (max-width: 780px){
+  .row.main {
+    overflow: hidden;
+  }
+}

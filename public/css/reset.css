@@ -1,0 +1,50 @@
+/* Bootstrap reset */
+body {
+  font-size: 14px;
+  font-family: Roboto;
+  color: #696969;
+}
+h1, h2, h3, h4 {
+  font-weight: 500;
+  margin-top: 10px;
+  font-family: 'Source Sans Pro';
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.3em;
+}
+h4 {
+  font-size: 1em;
+}
+.btn {
+  font-size: 1em;
+}
+label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+ul {
+  list-style-type: none;
+  padding:0px;
+}
+.carousel img {
+  width: 100%;
+}
+.hidden {
+  display: none;
+}
+a, a:hover {
+  text-decoration: none;
+}
+*::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+}

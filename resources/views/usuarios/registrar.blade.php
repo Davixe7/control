@@ -46,11 +46,21 @@
           @foreach($roles as $index=>$role)
           <div class="form-check form-check-inline">
             <label class="form-check-label">
-              <input class="form-radio-input" type="radio" value="{{ $role->id }}" name="role" {{ ($index == 0) ? 'checked' : ''}}> {{ $role->title }}
+              <input class="form-radio-input {{ ( $role->name == 'leader_master' || $role->name == 'table_member') ? 'cp-child' : 'no-child' }}" type="radio" value="{{ $role->id }}" name="role" {{ ($index == 0) ? 'checked' : ''}}> {{ $role->title }}
             </label>
           </div>
           @endforeach
         </div>
+        @if( Auth::User()->hasRole('admin') )
+        <div class="form-group cp_field">
+          <label for="user_id">Campaña</label>
+          <select class="form-control" name="user_id" required>
+            @foreach($cs as $c)
+              <option value="{{ $c->id }}">{{ $c->name }}</option>
+            @endforeach
+          </select>
+        </div>
+        @endif
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Guardar</button>
         </div>

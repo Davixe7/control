@@ -23,9 +23,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::put('voters/edit/', 'VoterController@putEdit');
     Route::delete('voters', 'VoterController@deleteDelete');
     Route::get('reports', 'UserController@getExport');
-  });
-
-  Route::group(['middleware'=>'roles', 'roles'=>['leader_master']], function(){
 
     Route::get('leaders', 'LeaderController@getIndex');
     Route::get('leaders/view/{id}', 'LeaderController@getView');
@@ -34,7 +31,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('leaders/edit/{id}', 'LeaderController@getEdit');
     Route::put('leaders/edit/', 'LeaderController@putEdit');
     Route::delete('leaders', 'LeaderController@deleteDelete');
-
   });
 
   Route::group(['middleware'=>'roles', 'roles'=>['admin', 'campaign']], function(){

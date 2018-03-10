@@ -41,7 +41,7 @@
                 </ul>
               </li>
             @endif
-            @if(Auth::user()->hasRole('leader_master'))
+            @if(Auth::user()->hasAnyRole(['admin', 'leader_master']))
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggler"><i class="fa fa-star"></i> Lideres</a>
                 <ul class="dropdown-menu">
@@ -49,8 +49,6 @@
                   <li class=""><a href="{{ url('/leaders/create') }}">Agregar</a></li>
                 </ul>
               </li>
-            @endif
-            @if(Auth::user()->hasAnyRole(['admin', 'leader_master']))
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggler"><i class="fa fa-group"></i> Votantes</a>
                 <ul class="dropdown-menu">
@@ -91,6 +89,16 @@
       $('#isleader').change(function(){
         ( $(this).is(':checked') ) ? $('#voter_id').hide().removeAttr('required') : $('#voter_id').show().addAttr('required');
       });
-  </script>
+      $('.cp-child').click(function(){
+        if( $(this).is(':checked') ){
+          $('.cp_field').addClass('active').addAttr('required');
+        }
+      });
+      $('.no-child').click(function(){
+        if( $(this).is(':checked') ){
+          $('.cp_field').removeClass('active').removeAttr('required');
+        }
+      });
+    </script>
   </body>
 </html>

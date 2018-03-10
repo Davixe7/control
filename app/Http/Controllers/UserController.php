@@ -27,7 +27,8 @@ class UserController extends Controller
   public function getCreate(Request $req){
     $centers = ( $req->user()->hasRole('admin') ) ? Center::all() : $req->user()->centers;
     $roles = ( $req->user()->hasRole('admin') ) ? Role::all() : Role::whereIn('name', ['leader_master', 'table_member'])->get();
-    return view('usuarios.registrar', ['centers'=>$centers, 'roles'=>$roles]);
+    $cs = ( $req->user()->hasRole('admin') ) ? User::campaigns()->get() : [];
+    return view('usuarios.registrar', ['centers'=>$centers, 'roles'=>$roles, 'cs'=>$cs]);
   }
 
   public function postCreate(Request $req){
@@ -39,7 +40,7 @@ class UserController extends Controller
     $user->tel = $req->tel;
     $user->email = $req->email;
     $user->password = bcrypt( $req->password );
-    $user->user_id = $req->user()->id;
+    $user->user_id = ( $req->user_id ) ? $req->user_id : $req->user()->id;
     $user->save();
     $user->roles()->attach(Role::find($req->role));
     $user->centers()->attach( Center::find( $req->center_id ) );
@@ -78,7 +79,7 @@ class UserController extends Controller
     $user->delete();
     return redirect('/users');
   }
-  
+
   public function getExport(){
     $file = Excel::create('reporte', function($excel){
       $excel->setTitle('REPORTE');
@@ -87,7 +88,7 @@ class UserController extends Controller
         $sheet->fromArray( User::all()->toArray() );
       });
     });
-    
+
     $file->download('xls');
   }
 }

@@ -22,7 +22,8 @@ class LeaderController extends Controller
 
   // Crea
   public function getCreate(Request $req){
-    return view('leaders.registrar');
+    $lds = ( $req->user()->hasRole('admin') ) ? User::leaders()->get() : [];
+    return view('leaders.registrar', ['lds'=>$lds]);
   }
 
   public function postCreate(Request $req){

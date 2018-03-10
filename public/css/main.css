@@ -162,6 +162,12 @@ a.dropdown-toggler[aria-expanded=false]:after {
   color: #0275d8;
   border: #fff;
 }
+.cp_field {
+  display: none !important;
+}
+.cp_field.active {
+  display: block !important;
+}
 @media (max-width: 780px){
   .row.main {
     overflow: hidden;

@@ -77,4 +77,12 @@ class User extends Authenticatable
     public function getFullName(){
       return $this->name . ' ' . $this->last_name;
     }
+
+    public function scopeCampaigns($req){
+      return $req->join('user_role', 'users.id', '=', 'user_role.user_id')->where('user_role.user_id', '4');
+    }
+
+    public function scopeLeaders($req){
+      return $req->join('user_role', 'users.id', '=', 'user_role.user_id')->where('user_role.user_id', '2');
+    }
 }

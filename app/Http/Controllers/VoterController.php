@@ -34,7 +34,7 @@ class VoterController extends Controller
 
   // Crea
   public function getCreate(Request $req){
-    $leaders = $req->user()->leaders()->where('user_id', $req->user()->id)->get();
+    $leaders = $req->user()->leaders();
     $centers = $req->user()->user->centers;
     return view('voters.registrar', ['leaders'=>$leaders, 'centers'=>$centers]);
   }
@@ -103,21 +103,21 @@ class VoterController extends Controller
     $voter->delete();
     return redirect('/voters');
   }
-  
+
   public function getExport(Request $req){
-    
+
     $this->votantes = Voter::XLS($req->sort)->get();
-    
+
     if( $this->votantes->count() ){
       Excel::create('reporte'.Carbon::now(), function($excel){
         $excel->setTitle("Todos los votantes");
         $excel->setDescription("Reporte de votantes " . Carbon::now());
-        
+
         $excel->sheet('Hoja 1', function($sheet){
           $sheet->fromArray( $this->votantes );
         });
       })->download('xls');
-      
+
     }
   }
 }

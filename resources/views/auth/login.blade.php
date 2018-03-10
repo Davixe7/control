@@ -5,14 +5,24 @@
     <h1>Ingresa ahora</h1>
     <form method="POST" action="{{ url('/login') }}">
       {{ csrf_field() }}
-      <div class="form-group">
+      <div class="form-group {{ ( $errors->has('email') ) ? ' has-error' : '' }}">
         <label for="email">Email</label>
         <input type="email" class="form-control" name="email" id="email">
       </div>
-      <div class="form-group">
+      @if ($errors->has('email'))
+        <span class="help-block">
+          <strong>{{ $errors->first('email') }}</strong>
+        </span>
+      @endif
+      <div class="form-group {{ ( $errors->has('password') ) ? ' has-error' : '' }}">
         <label for="password">Contraseña</label>
         <input type="password" class="form-control" name="password" id="password">
       </div>
+      @if ($errors->has('password'))
+        <span class="help-block">
+          <strong>{{ $errors->first('password') }}</strong>
+        </span>
+      @endif
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">

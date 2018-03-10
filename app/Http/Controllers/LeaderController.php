@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Leader;
+use App\User;
 use App\Http\Requests;
 
 class LeaderController extends Controller
@@ -22,7 +23,7 @@ class LeaderController extends Controller
 
   // Crea
   public function getCreate(Request $req){
-    $lds = ( $req->user()->hasRole('admin') ) ? User::leaders()->get() : [];
+    $lds = ( $req->user()->hasRole('admin') ) ? User::leadermasters()->get() : [];
     return view('leaders.registrar', ['lds'=>$lds]);
   }
 

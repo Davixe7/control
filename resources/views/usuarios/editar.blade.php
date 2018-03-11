@@ -40,14 +40,7 @@
             </div>
           @endforeach
         </div>
-        <div class="form-group">
-          <label for="centers">Centro de votación</label>
-          <select class="form-control" name="center_id" id="center" required>
-            @foreach($centers as $center)
-              <option value="{{$center->id}}" {{ ( $center->id == $user->centers->first()->id ) ? 'selected' : ''}}>{{$center->name}}</option>
-            @endforeach
-          </select>
-        </div>
+
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Guardar</button>
         </div>

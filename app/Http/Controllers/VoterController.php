@@ -34,8 +34,8 @@ class VoterController extends Controller
 
   // Crea
   public function getCreate(Request $req){
-    $leaders = $req->user()->leaders();
-    $centers = $req->user()->user->centers;
+    $leaders = ( $req->user()->hasRole('admin') ) ? User::leadermasters()->get() : $req->user()->leaders()->get();
+    $centers = ( $req->user()->hasRole('admin') ) ? [] : $req->user()->user->centers;
     return view('voters.registrar', ['leaders'=>$leaders, 'centers'=>$centers]);
   }
 

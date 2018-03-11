@@ -85,18 +85,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <script defer>
-      $('#isleader').change(function(){
-        ( $(this).is(':checked') ) ? $('#voter_id').hide().removeAttr('required') : $('#voter_id').show().addAttr('required');
-      });
+    <script>
       $('.cp-child').click(function(){
         if( $(this).is(':checked') ){
-          $('.cp_field').addClass('active').addAttr('required');
+          $('.cp_field').addClass('active');
+          $(this).attr('required', 'required');
         }
       });
       $('.no-child').click(function(){
         if( $(this).is(':checked') ){
-          $('.cp_field').removeClass('active').removeAttr('required');
+          $('.cp_field').removeClass('active');
+          $('.cp_field .form-control').removeAttr('required');
         }
       });
     </script>

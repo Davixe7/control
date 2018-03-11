@@ -34,6 +34,29 @@
           <label for="dir">Dirección</label>
           <input type="text" class="form-control" name="dir" id="dir" required>
         </div>
+        @if( Auth::User()->hasRole('admin') )
+          <div class="form-group">
+            <label for="leader">Lider máster</label>
+            <select class="form-control" name="user_id" id="user_id" required>
+              @foreach($leaders as $leader)
+                <option value="{{$leader->id}}">{{ $leader->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="leader">Lider</label>
+            <select class="form-control" name="leader_id" id="leader_id" required></select>
+          </div>
+        @elseif( Auth::User()->hasRole('leader_master') )
+        <div class="form-group">
+          <label for="leader">Lider</label>
+          <select class="form-control" name="leader_id" id="leader_id" required>
+            @foreach($leaders as $leader)
+              <option value="{{$leader->id}}">{{ $leader->name }}</option>
+            @endforeach
+          </select>
+        </div>
+        @endif
         <div class="form-group">
           <label for="center">Centro</label>
           <select class="form-control" name="center_id" id="center_id" required>
@@ -45,14 +68,6 @@
         <div class="form-group">
           <label for="table">Mesa</label>
           <input type="number" max="10" min="1" class="form-control" name="table" id="table" required>
-        </div>
-        <div class="form-group">
-          <label for="leader">Lider</label>
-          <select class="form-control" name="leader_id" id="leader_id" required>
-            @foreach($leaders as $leader)
-              <option value="{{$leader->id}}">{{ $leader->name }}</option>
-            @endforeach
-          </select>
         </div>
         <div class="form-group text-center">
           <button type="submit" class="btn btn-primary mt-4">Guardar</button>

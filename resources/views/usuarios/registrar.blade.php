@@ -34,14 +34,6 @@
           <input type="text" class="form-control" name="dir" id="dir" required>
         </div>
         <div class="form-group">
-          <label for="center">Centro de votación</label>
-          <select class="form-control" name="center_id" id="center" required>
-            @foreach($centers as $center)
-              <option value="{{$center->id}}">{{$center->name}}</option>
-            @endforeach
-          </select>
-        </div>
-        <div class="form-group">
           <label for="roles">Roles</label><br>
           @foreach($roles as $index=>$role)
           <div class="form-check form-check-inline">

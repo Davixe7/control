@@ -32,7 +32,7 @@ class LeaderController extends Controller
     $leader->name = $req->name;
     $leader->tel = $req->tel;
     $leader->email = $req->email;
-    $leader->user_id = $req->user_id;
+    $leader->user_id = ($req->user_id) ? $req->user_id : $req->user()->id;
     $leader->save();
 
     return redirect('leaders/');
@@ -49,7 +49,6 @@ class LeaderController extends Controller
     $leader->name = $req->name;
     $leader->tel = $req->tel;
     $leader->email = $req->email;
-    $leader->user_id = $req->user_id;
     $leader->save();
 
     return redirect('leaders/');
